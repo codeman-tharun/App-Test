@@ -1,6 +1,5 @@
 package com.example.calculatorapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -10,29 +9,24 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class HistoryScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.history_screen);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        Button toCallScreen=findViewById(R.id.Bt_ToCal);
-        toCallScreen.setOnClickListener(v->{
-            Intent intent=new Intent(this, Screen2.class);
-            startActivity(intent);
+        Button BtBack=findViewById(R.id.History_Back);
+        BtBack.setOnClickListener(v->{
+            finish();
+            System.exit(1);
         });
 
-        Button toExit=findViewById(R.id.Bt_Exit);
-        toExit.setOnClickListener(v->{
-            finish();
-            System.exit(0);
-        });
     }
 }
