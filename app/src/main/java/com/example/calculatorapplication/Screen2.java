@@ -6,16 +6,23 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Screen2 extends AppCompatActivity {
     String value="";
     String result="";
+
+    String calculations="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,27 +48,34 @@ public class Screen2 extends AppCompatActivity {
         for(int id:number_bt){
             findViewById(id).setOnClickListener(v -> {
                 Button bt=findViewById(id);
+
                 value=value+bt.getText().toString();
                 textview.setText(value);
             });
         }
 
         SharedPreferences preferences=getApplicationContext().getSharedPreferences("Calculationinfo", Context.MODE_PRIVATE);
+
+
         Button total=findViewById(R.id.btn_equals);
         total.setOnClickListener(v->{
             result="";
             if(value.matches(".*[*/+\\-].*")){
                 result=evaluateExpression(value);
                 Answerview.setText(result);
-
-                SharedPreferences.Editor editor=preferences.edit();
-                editor.putString("CalculationValue",value);
-                editor.putString("Answer",result);
-                editor.apply();
             }
             else{
                 Answerview.setText(value);
+
             }
+            calculations=value+"="+result+"\n\n"+calculations;
+            SharedPreferences.Editor editor=preferences.edit();
+            editor.putString("History",calculations);
+            editor.apply();
+
+            String texttest=preferences.getString("History","None");
+            Toast.makeText(this, texttest, Toast.LENGTH_SHORT).show();
+
         });
 
         Button BtnClear=findViewById(R.id.btn_clear);
@@ -199,7 +213,7 @@ public class Screen2 extends AppCompatActivity {
         return tvalue;
     }
     static int lastindexofoprator(String expression){
-        int a[]={0,0,0,0};
+        int[] a = new int[4];
         a[0] = (expression.lastIndexOf('*')!=-1) ? (expression.lastIndexOf('*')):(Integer.MIN_VALUE);
         a[1] = (expression.lastIndexOf('/')!=-1) ? (expression.lastIndexOf('/')):(Integer.MIN_VALUE);
         a[2] = (expression.lastIndexOf('+')!=-1) ? (expression.lastIndexOf('+')):(Integer.MIN_VALUE);
@@ -210,7 +224,7 @@ public class Screen2 extends AppCompatActivity {
     }
 
     static int Firstindexofoprator(String expression){
-        int a[]={0,0,0,0};
+        int[] a=new int[4];
         a[0] = (expression.indexOf('*')!=-1) ? (expression.indexOf('*')):(Integer.MAX_VALUE);
         a[1] = (expression.indexOf('/')!=-1) ? (expression.indexOf('/')):(Integer.MAX_VALUE);
         a[2] = (expression.indexOf('+')!=-1) ? (expression.indexOf('+')):(Integer.MAX_VALUE);

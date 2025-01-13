@@ -1,19 +1,17 @@
 package com.example.calculatorapplication;
 
-public class CalList {
-    private String CalValue;
-    private String Answer;
+import java.util.List;
 
-    public CalList(String CalValue,String Answer){
+public class CalList {
+    private List<String> CalValue;
+
+    public CalList(List<String> CalValue){
         this.CalValue=CalValue;
-        this.Answer=Answer;
     }
 
-    public String getvalue(){
+    public List<String> getvalue(){
         return CalValue;
     }
 
-    public String getans(){
-        return Answer;
-    }
+
 }

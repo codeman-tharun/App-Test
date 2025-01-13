@@ -1,13 +1,23 @@
 package com.example.calculatorapplication;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class HistoryScreen extends AppCompatActivity {
 
@@ -16,11 +26,14 @@ public class HistoryScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.history_screen);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+
+        SharedPreferences preferences=getApplicationContext().getSharedPreferences("Calculationinfo", Context.MODE_PRIVATE);
+
+        String calculations=preferences.getString("History","None");
+
+        TextView history_text=findViewById(R.id.TextHistory);
+        history_text.setText(calculations);
 
         Button BtBack=findViewById(R.id.History_Back);
         BtBack.setOnClickListener(v->{

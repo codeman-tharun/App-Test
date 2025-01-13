@@ -7,16 +7,9 @@
     android:padding="10sp">
 
     <TextView
-        android:id="@+id/His_Question"
+        android:id="@+id/HistoryText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Question"/>
-
-    <TextView
-        android:id="@+id/His_Answer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Answer"
-        android:textAlignment="textEnd"/>
 
 </LinearLayout>

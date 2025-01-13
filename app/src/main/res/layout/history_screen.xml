@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HistoryScreen">
+    tools:context=".HistoryScreen"
+    android:padding="10sp">
 
     <TextView
         android:layout_width="match_parent"
@@ -28,9 +29,12 @@
         android:layout_marginEnd="10sp"
         android:layout_marginBottom="5sp"/>
 
-    <ListView
+    <TextView
+        android:id="@+id/TextHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Cal_History_list" />
+        android:text="Default"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
 
 </LinearLayout>
