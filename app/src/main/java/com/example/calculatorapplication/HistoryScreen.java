@@ -33,12 +33,26 @@ public class HistoryScreen extends AppCompatActivity {
         String calculations=preferences.getString("History","None");
 
         TextView history_text=findViewById(R.id.TextHistory);
-        history_text.setText(calculations);
+        if(calculations.isEmpty()){
+            history_text.setText("None");
+        }
+        else{
+            history_text.setText(calculations);
+        }
+
 
         Button BtBack=findViewById(R.id.History_Back);
         BtBack.setOnClickListener(v->{
             finish();
             System.exit(1);
+        });
+
+        Button Btclearhis=findViewById(R.id.btn_ClearHistory);
+        Btclearhis.setOnClickListener(v->{
+            SharedPreferences.Editor editor=preferences.edit();
+            editor.putString("History","");
+            editor.apply();
+            history_text.setText("None");
         });
 
     }

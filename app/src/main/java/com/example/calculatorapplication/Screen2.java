@@ -56,7 +56,6 @@ public class Screen2 extends AppCompatActivity {
 
         SharedPreferences preferences=getApplicationContext().getSharedPreferences("Calculationinfo", Context.MODE_PRIVATE);
 
-
         Button total=findViewById(R.id.btn_equals);
         total.setOnClickListener(v->{
             result="";
@@ -68,14 +67,11 @@ public class Screen2 extends AppCompatActivity {
                 Answerview.setText(value);
 
             }
+            calculations=preferences.getString("History","None");
             calculations=value+"="+result+"\n\n"+calculations;
             SharedPreferences.Editor editor=preferences.edit();
             editor.putString("History",calculations);
             editor.apply();
-
-            String texttest=preferences.getString("History","None");
-            Toast.makeText(this, texttest, Toast.LENGTH_SHORT).show();
-
         });
 
         Button BtnClear=findViewById(R.id.btn_clear);

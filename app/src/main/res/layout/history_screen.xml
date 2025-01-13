@@ -19,15 +19,28 @@
         android:layout_marginTop="10sp"
         android:layout_marginBottom="20sp"
         tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/History_Back"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
-        android:textSize="24sp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
         android:layout_marginStart="10sp"
         android:layout_marginEnd="10sp"
-        android:layout_marginBottom="5sp"/>
+        android:layout_marginBottom="5sp">
+        <Button
+            android:id="@+id/History_Back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textSize="20sp" />
+        <Button
+            android:id="@+id/btn_ClearHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear History"
+            android:textSize="20sp" />
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/TextHistory"
