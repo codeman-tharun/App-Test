@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:text="Default"
         android:textSize="15sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textAlignment="center"/>
 
 </LinearLayout>
