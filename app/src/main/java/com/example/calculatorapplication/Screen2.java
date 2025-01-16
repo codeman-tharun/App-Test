@@ -65,7 +65,6 @@ public class Screen2 extends AppCompatActivity {
             }
             else{
                 Answerview.setText(value);
-
             }
             calculations=preferences.getString("History","None");
             calculations=value+"="+result+"\n\n"+calculations;
@@ -85,7 +84,6 @@ public class Screen2 extends AppCompatActivity {
         Button BtnExit=findViewById(R.id.btn_Back);
         BtnExit.setOnClickListener(v->{
             finish();
-            System.exit(0);
         });
 
         Button BtnHistory=findViewById(R.id.btn_history);
@@ -98,6 +96,7 @@ public class Screen2 extends AppCompatActivity {
         if(tvalue.matches(".*[/].*")){
             int index=tvalue.indexOf("/");
 
+            //23*45/8+9
             String start=tvalue.substring(0,index);
             String end=tvalue.substring(index+1);
 
@@ -160,6 +159,7 @@ public class Screen2 extends AppCompatActivity {
             if(lastindex==Integer.MIN_VALUE){
                 lastindex=-1;
             }
+            //12*3*7/4+2
             start=tvalue.substring(0,lastindex+1);
 
             int firstindex=Firstindexofoprator(end);
@@ -175,7 +175,6 @@ public class Screen2 extends AppCompatActivity {
             double num2=Double.valueOf(str2);
 
             String middle=String.valueOf(num1+num2);
-            System.out.println(middle);
             return evaluateExpression(start+middle+end);
         }
         if(tvalue.matches(".*[\\-].*")){

@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         Button toExit=findViewById(R.id.Bt_Exit);
         toExit.setOnClickListener(v->{
             finish();
-            System.exit(0);
         });
     }
 }

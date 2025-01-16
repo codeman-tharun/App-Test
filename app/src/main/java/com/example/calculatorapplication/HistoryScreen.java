@@ -44,7 +44,6 @@ public class HistoryScreen extends AppCompatActivity {
         Button BtBack=findViewById(R.id.History_Back);
         BtBack.setOnClickListener(v->{
             finish();
-            System.exit(1);
         });
 
         Button Btclearhis=findViewById(R.id.btn_ClearHistory);
